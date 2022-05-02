@@ -61,11 +61,8 @@ namespace WindowsFormsApp1
         //關閉視窗代表離線登出 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (button1.Enabled == false)
-            {
-                Send("9" + User); //傳送自己的離線訊息給伺服器
-                T.Close();        //關閉網路通訊器T
-            }
+            LogOut();
+
         }
 
         private void Listen()
@@ -140,6 +137,20 @@ namespace WindowsFormsApp1
         private void button_sendAll_Click(object sender, EventArgs e)
         {
             listBox_onlineList.ClearSelected();
+        }
+
+        private void LogOut()
+        {
+            if (button1.Enabled == false)
+            {
+                Send("9" + User); //傳送自己的離線訊息給伺服器
+                T.Close();        //關閉網路通訊器T
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LogOut();
         }
     }
 }
